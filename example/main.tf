@@ -10,6 +10,6 @@ module "document_db" {
   parameter_group_family         = "docdb4.0"
   cluster_engine                 = "docdb"
   cluster_engine_version         = "4.0.0"
-  mongo_master_db_username       = "admin"
+  mongo_master_db_username       = "admin1"
   mongo_master_db_password       = "A9nPMZm9spwBFq68"
 }
