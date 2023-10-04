@@ -37,7 +37,7 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
 	count                        = var.instance_count
 	identifier                   = "${var.project_name}-${var.app_name}-${count.index}"
 	cluster_identifier           = aws_docdb_cluster.cluster.id
-	instance_class               = lookup(var.instance_class, terraform.workspace, "undefined")
+	instance_class               = var.instance_class
 	apply_immediately            = true
 	auto_minor_version_upgrade   = true
 	engine                       = aws_docdb_cluster.cluster.engine
