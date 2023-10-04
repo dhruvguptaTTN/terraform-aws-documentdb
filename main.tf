@@ -1,8 +1,7 @@
 resource "aws_docdb_subnet_group" "subnet_group" {
 	name       = "docdb-subnet-group"
 	subnet_ids = ["subnet-043d59b3957d49e1d","subnet-093641ce3f549831e"]
-	description = "Tata Sky Portal Subnet Group"
-	tags       = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-subnet-group"}))
+	description = "SWS Subnet Group"
 }
 
 resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
