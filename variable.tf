@@ -11,6 +11,11 @@ variable "security_group" {
 	default = []
 }
 
+variable "cluster_type" {
+	type = string
+  	default = "instance_based_cluster"
+}
+
 variable "instance_class" {
 	type    = string
 	default = "db.r4.large"

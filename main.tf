@@ -16,6 +16,7 @@ resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
 }
 
 resource "aws_docdb_cluster" "cluster" {
+	count 							= var.cluster_type=="instance_based_based" 
 	depends_on 						= [aws_docdb_subnet_group.subnet_group, aws_docdb_cluster_parameter_group.cluster_parameter_group]
 	cluster_identifier              = "${local.service_name_prefix}-${var.app_name}"
 	engine                          = var.cluster_engine
