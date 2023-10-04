@@ -29,7 +29,7 @@ resource "aws_docdb_cluster" "cluster" {
 	deletion_protection             = true
 	storage_encrypted               = true
 	port                            = "27017"
-	vpc_security_group_ids          = lookup(var.security_group, terraform.workspace, ["undefined"])
+	vpc_security_group_ids          = var.security_group
 	# tags        = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-${var.app_name}"}))
 }
 
