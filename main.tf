@@ -35,7 +35,7 @@ resource "aws_docdb_cluster" "cluster" {
 resource "aws_docdb_cluster_instance" "cluster_instances" {
 	depends_on 					 = [aws_docdb_cluster.cluster]
 	count                        = var.instance_count
-	identifier                   = "${var.project_name}-${var.app_name}-${instance_count.index}"
+	identifier                   = "${var.project_name}-${var.app_name}-${count.index}"
 	cluster_identifier           = aws_docdb_cluster.cluster.id
 	instance_class               = lookup(var.instance_class, terraform.workspace, "undefined")
 	apply_immediately            = true

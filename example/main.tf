@@ -4,7 +4,6 @@ module "document_db" {
   app_name                       = "mongo-db"
   security_group                 = ["sg-999999"]
   subnet_ids                     = [""]
-  instance_count                 = 1
   project_name                   = "SWS"
   instance_class                 = "db.r4.large"
   availability_zones             = ["us-east-1a","us-east-1b","us-east-1c"]
