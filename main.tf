@@ -13,7 +13,7 @@ resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
 resource "aws_docdb_cluster" "cluster" {
 	count 							= var.cluster_type=="elastic_cluster" ? 1 : 0
 	depends_on 						= [aws_docdb_subnet_group.subnet_group, aws_docdb_cluster_parameter_group.cluster_parameter_group]
-	cluster_identifier              = "${local.service_name_prefix}-${var.app_name}"
+	cluster_identifier              = "${var.project_name}-${var.app_name}"
 	engine                          = var.cluster_engine
 	engine_version                  = var.cluster_engine_version
 	master_username                 = lookup(var.mongo_master_db_username, terraform.workspace,"undefined")
