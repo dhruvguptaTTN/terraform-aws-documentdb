@@ -5,14 +5,14 @@ resource "aws_docdb_subnet_group" "subnet_group" {
 		data.terraform_remote_state.vpc_static.outputs.private_subnet_4
 	]
 	description = "${var.project_name} - Subnet Group"
-	tags       = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-subnet-group"}))
+	tags       = merge(local.common_tags, tomap({"Name":"${var.project_name}-subnet-group"}))
 }
 
 resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
 	name        = "${local.service_name_prefix}-parameter-group"
 	family      = var.parameter_group_family
 	description = "${var.project_name} - Parameter Group"
-	tags        = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-parameter-group"}))
+	tags        = merge(local.common_tags, tomap({"Name":"${var.project_name}-parameter-group"}))
 }
 
 resource "aws_docdb_cluster" "cluster" {
