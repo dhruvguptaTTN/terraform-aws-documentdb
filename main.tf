@@ -16,8 +16,8 @@ resource "aws_docdb_cluster" "cluster" {
 	cluster_identifier              = "${var.project_name}-${var.app_name}"
 	engine                          = var.cluster_engine
 	engine_version                  = var.cluster_engine_version
-	master_username                 = lookup(var.mongo_master_db_username, terraform.workspace,"undefined")
-	master_password                 = lookup(var.mongo_master_db_password, terraform.workspace,"undefined")
+	master_username                 = var.mongo_master_db_username
+	master_password                 = var.mongo_master_db_password
 	backup_retention_period         = 7
 	preferred_backup_window         = var.preferred_backup_window
 	preferred_maintenance_window    = var.preferred_maintenance_window
