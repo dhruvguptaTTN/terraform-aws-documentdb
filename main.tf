@@ -1,11 +1,8 @@
 resource "aws_docdb_subnet_group" "subnet_group" {
-	name       = "main"
-  	subnet_ids = [var..id, aws_subnet.backend.id]
-
-	tags = {
-		Name = "My docdb subnet group"
-	}
-	description = "${var.project_name} - Subnet Group"
+	name       = "docdb-subnet-group"
+	subnet_ids = ["subnet-043d59b3957d49e1d","subnet-093641ce3f549831e"]
+	description = "Tata Sky Portal Subnet Group"
+	tags       = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-subnet-group"}))
 }
 
 resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
@@ -34,7 +31,7 @@ resource "aws_docdb_cluster" "cluster" {
 	storage_encrypted               = true
 	port                            = "27017"
 	vpc_security_group_ids          = lookup(var.security_group, terraform.workspace, ["undefined"])
-	tags        = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-${var.app_name}"}))
+	# tags        = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-${var.app_name}"}))
 }
 
 resource "aws_docdb_cluster_instance" "cluster_instances" {
@@ -47,5 +44,5 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
 	auto_minor_version_upgrade   = true
 	engine                       = aws_docdb_cluster.cluster.engine
 	preferred_maintenance_window = var.preferred_maintenance_window
-	tags        = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-${var.app_name}"}))
+	# tags        = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-${var.app_name}"}))
 }
