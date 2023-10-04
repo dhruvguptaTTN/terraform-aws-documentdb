@@ -3,12 +3,11 @@ module "document_db" {
 
   app_name                       = "mongo-db"
   project_name                   = "SWS"
-  security_group                 = var.security_group
-  instance_class                 = var.instance_class
-  availability_zones             = var.availability_zones
-  parameter_group_family         = var.parameter_group_family
-  cluster_engine                 = var.cluster_engine
-  cluster_engine_version         = var.cluster_engine_version
-  mongo_master_db_username       = var.mongo_master_db_username
-  mongo_master_db_password       = var.mongo_master_db_password
+  instance_class                 = "availability_zones"
+  availability_zones             = ["us-east-1a","us-east-1b","us-east-1c"]
+  parameter_group_family         = "docdb4.0"
+  cluster_engine                 = "docdb"
+  cluster_engine_version         = "4.0.0"
+  mongo_master_db_username       = "admin"
+  mongo_master_db_password       = "A9nPMZm9spwBFq68"
 }
