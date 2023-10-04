@@ -3,7 +3,7 @@ module "document_db" {
 
   app_name                       = "mongo-db"
   security_group                 = ["sg-999999"]
-  subnet_ids                     = [""]
+  subnet_ids                     = ["subnet-043d59b3957d49e1d","subnet-093641ce3f549831e","subnet-0d911d25c86c0a429"]
   project_name                   = "sws"
   instance_class                 = "db.r4.large"
   availability_zones             = ["us-east-1a","us-east-1b","us-east-1c"]
