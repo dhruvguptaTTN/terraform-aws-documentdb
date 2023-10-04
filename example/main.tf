@@ -3,6 +3,7 @@ module "document_db" {
 
   app_name                       = "mongo-db"
   vpc_id                         = "vpc-0c7ca42512bbbb3df"
+  security_group                 = ["sg-999999","sg-123456","sg-1234568"]
   project_name                   = "SWS"
   instance_class                 = "db.r4.large"
   availability_zones             = ["us-east-1a","us-east-1b","us-east-1c"]
