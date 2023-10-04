@@ -12,7 +12,7 @@ resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
 
 resource "aws_docdb_cluster" "cluster" {
 	depends_on 						= [aws_docdb_subnet_group.subnet_group, aws_docdb_cluster_parameter_group.cluster_parameter_group]
-	cluster_identifier              = format("%s-%s", var.project_name, var.app_name)
+	cluster_identifier              = "${var.project_name}-${var.app_name}"
 	engine                          = var.cluster_engine
 	engine_version                  = var.cluster_engine_version
 	master_username                 = var.mongo_master_db_username
@@ -35,7 +35,7 @@ resource "aws_docdb_cluster" "cluster" {
 resource "aws_docdb_cluster_instance" "cluster_instances" {
 	depends_on 					 = [aws_docdb_cluster.cluster]
 	count                        = var.instance_count
-	identifier                   = format("%s-%s-%d", var.project_name, var.app_name, count.index)
+	identifier                   = "${var.project_name}-${var.app_name}-${count.index}"
 	cluster_identifier           = aws_docdb_cluster.cluster.id
 	instance_class               = var.instance_class
 	apply_immediately            = true
