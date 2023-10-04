@@ -4,6 +4,7 @@ variable "app_name" {
 
 variable "project_name" {
 	type = string
+	default = "SWS"
 }
 
 variable "security_group" {
