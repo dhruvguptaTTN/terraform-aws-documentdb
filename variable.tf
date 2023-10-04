@@ -7,21 +7,13 @@ variable "project_name" {
 }
 
 variable "security_group" {
-	type    = map(list(string))
-	default = {
-		non-prod = ["sg-0887b64489117141d"]
-		prod     = ["sg-04961807801382c11"]
-		beta     = ["sg-04961807801382c11"]
-	}
+	type    = list(string)
+	default = []
 }
 
 variable "instance_class" {
-	type    = map(string)
-	default = {
-		non-prod = "db.t3.medium"
-		prod     = "db.r5.large"
-		beta     = "db.t3.medium"
-	}
+	type    = string
+	default = "db.r4.large"
 }
 
 variable "preferred_maintenance_window" {
@@ -30,9 +22,9 @@ variable "preferred_maintenance_window" {
 
 variable "availability_zones" {
 	default = [
-		"ap-south-1a",
-		"ap-south-1b",
-        "ap-south-1c"]
+		"us-east-1a",
+		"us-east-1b",
+        "us-east-1c"]
 }
 
 variable "preferred_backup_window" {
