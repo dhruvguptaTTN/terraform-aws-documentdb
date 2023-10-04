@@ -12,6 +12,11 @@ variable "security_group" {
 	default = []
 }
 
+variable "instance_count" {
+    type    = number
+	default = 1 
+}
+
 variable "subnet_ids" {
 	type = list(string)
 	default = []
