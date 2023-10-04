@@ -52,19 +52,11 @@ variable "cluster_engine_version" {
 }
 
 variable "mongo_master_db_username" {
-	type    = map(string)
-	default = {
-		non-prod = "root"
-		prod     = "root"
-        beta     = "root"
-	}
+	type    = string
+	default = "admin"
 }
 
 variable "mongo_master_db_password" {
-	type    = map(string)
-	default = {
-		non-prod = "A9nPMZm9spwBFq68"
-		prod     = "A9nFtrcH5spwBFq68"
-		beta     = "A9nFtrcH5spwBFq68"
-	}
+	type    = string
+	default = "A9nPMZm9spwBFq68"
 }
