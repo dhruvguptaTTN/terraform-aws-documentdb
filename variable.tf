@@ -12,6 +12,11 @@ variable "security_group" {
 	default = []
 }
 
+variable "subnet_ids" {
+	type = list(string)
+	default = []
+}
+
 variable "cluster_type" {
 	type = string
   	default = "instance_based_cluster"
