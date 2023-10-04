@@ -14,7 +14,7 @@ variable "security_group" {
 
 variable "instance_count" {
     type    = number
-	default = 1 
+	default = 2
 }
 
 variable "subnet_ids" {
