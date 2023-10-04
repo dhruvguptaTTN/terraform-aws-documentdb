@@ -25,7 +25,7 @@ resource "aws_docdb_cluster" "cluster" {
 	availability_zones              = var.availability_zones
 	db_subnet_group_name            = aws_docdb_subnet_group.subnet_group.id
 	db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.cluster_parameter_group.id
-	deletion_protection             = true
+	deletion_protection             = false
 	storage_encrypted               = true
 	port                            = "27017"
 	vpc_security_group_ids          = var.security_group
