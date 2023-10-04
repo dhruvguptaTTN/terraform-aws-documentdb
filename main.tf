@@ -16,7 +16,7 @@ resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
 }
 
 resource "aws_docdb_cluster" "cluster" {
-	depends_on = [aws_docdb_subnet_group.subnet_group, aws_docdb_cluster_parameter_group.cluster_parameter_group]
+	depends_on 						= [aws_docdb_subnet_group.subnet_group, aws_docdb_cluster_parameter_group.cluster_parameter_group]
 	cluster_identifier              = "${local.service_name_prefix}-${var.app_name}"
 	engine                          = var.cluster_engine
 	engine_version                  = var.cluster_engine_version
