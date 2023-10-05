@@ -10,13 +10,18 @@ resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
   family      = var.parameter_group_family
 }
 
+resource "random_password" "db_passsword" {
+  length           = 16
+  special          = true
+}
+
 resource "aws_docdb_cluster" "cluster" {
 	depends_on 						= [aws_docdb_subnet_group.subnet_group, aws_docdb_cluster_parameter_group.cluster_parameter_group]
 	cluster_identifier              = "${var.project_name}-${var.app_name}"
 	engine                          = var.cluster_engine
 	engine_version                  = var.cluster_engine_version
 	master_username                 = var.mongo_master_db_username
-	master_password                 = var.mongo_master_db_password
+	master_password                 = random_password.db_passsword.result
 	backup_retention_period         = 7
 	preferred_backup_window         = var.preferred_backup_window
 	preferred_maintenance_window    = var.preferred_maintenance_window

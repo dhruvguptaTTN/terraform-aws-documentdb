@@ -48,10 +48,7 @@ variable "preferred_maintenance_window" {
 }
 
 variable "availability_zones" {
-	default = [
-		"us-east-1a",
-		"us-east-1b",
-        "us-east-1c"]
+	default = []
 }
 
 variable "preferred_backup_window" {
