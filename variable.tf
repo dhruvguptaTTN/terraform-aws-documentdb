@@ -4,7 +4,12 @@ variable "app_name" {
 
 variable "project_name" {
 	type = string
-	default = "SWS"
+	default = "sws"
+}
+
+variable "env" {
+    type = string
+	default = ""
 }
 
 variable "security_group" {
@@ -33,6 +38,11 @@ variable "instance_class" {
 	default = "db.r4.large"
 }
 
+variable "tags" {
+    type = map(string)
+	default = {}
+}
+
 variable "preferred_maintenance_window" {
 	default = "Fri:09:00-Fri:09:30"
 }
@@ -49,7 +59,7 @@ variable "preferred_backup_window" {
 }
 
 variable "parameter_group_family" {
-	default = "docdb4.0"
+	default = "docdb5.0"
 }
 
 variable "cluster_engine" {
@@ -57,7 +67,7 @@ variable "cluster_engine" {
 }
 
 variable "cluster_engine_version" {
-	default = "4.0.0"
+	default = "5.0.0"
 }
 
 variable "mongo_master_db_username" {

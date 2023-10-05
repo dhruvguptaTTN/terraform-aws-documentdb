@@ -1,11 +1,11 @@
 resource "aws_docdb_subnet_group" "subnet_group" {
-  name        = "subnet-group-${var.app_name}"
+  name        = "${var.app_name}-subnet-group"
   description = "Allowed subnets for DB cluster instances."
   subnet_ids  = var.subnet_ids
 }
 
 resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
-  name        = "parameter-group-${var.app_name}"
+  name        = "${var.app_name}-parameter-group"
   description = "DB cluster parameter group."
   family      = var.parameter_group_family
 }
@@ -29,7 +29,14 @@ resource "aws_docdb_cluster" "cluster" {
 	storage_encrypted               = true
 	port                            = "27017"
 	vpc_security_group_ids          = var.security_group
-	# tags        = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-${var.app_name}"}))
+	tags = merge(
+    var.tags,
+    {
+      "Engine" = var.cluster_engine
+	  "Environment" = var.env
+	  "Project" = var.project_name
+	}
+  )
 }
 
 resource "aws_docdb_cluster_instance" "cluster_instances" {
@@ -42,5 +49,12 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
 	auto_minor_version_upgrade   = true
 	engine                       = aws_docdb_cluster.cluster.engine
 	preferred_maintenance_window = var.preferred_maintenance_window
-	# tags        = merge(local.common_tags, tomap({"Name":"${local.service_name_prefix}-${var.app_name}"}))
+	tags = merge(
+    var.tags,
+    {
+      "Engine" = var.cluster_engine
+	  "Environment" = var.env
+	  "Project" = var.project_name
+	}
+  )
 }

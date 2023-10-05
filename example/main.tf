@@ -2,6 +2,7 @@ module "document_db" {
   source = "git@github.com:narenderttn/terraform-aws-documentdb.git"  # Replace with the actual path to your module source
 
   app_name                       = "mongo-db"
+  env                            = "dev"
   security_group                 = ["sg-0f84c3eb782be6630"]
   subnet_ids                     = ["subnet-043d59b3957d49e1d","subnet-093641ce3f549831e","subnet-0d911d25c86c0a429"]
   project_name                   = "sws"
