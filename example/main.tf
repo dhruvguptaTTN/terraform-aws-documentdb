@@ -12,5 +12,4 @@ module "document_db" {
   cluster_engine                 = "docdb"
   cluster_engine_version         = "5.0.0"
   mongo_master_db_username       = "admin1"
-  mongo_master_db_password       = "A9nPMZm9spwBFq68"
 }
