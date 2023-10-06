@@ -17,11 +17,6 @@ variable "vpc_id" {
 	default = ""
 }
 
-variable "security_group" {
-	type    = list(string)
-	default = []
-}
-
 variable "instance_count" {
     type    = number
 	description = "Number of DB instances to be created in the cluster"

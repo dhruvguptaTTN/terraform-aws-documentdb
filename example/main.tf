@@ -4,7 +4,6 @@ module "document_db" {
   app_name                       = "mongo-db"
   env                            = "dev"
   vpc_id                         = "vpc-0c7ca42512bbbb3df"
-  security_group                 = ["sg-0f84c3eb782be6630"]
   subnet_ids                     = ["subnet-043d59b3957d49e1d","subnet-093641ce3f549831e","subnet-0d911d25c86c0a429"]
   project_name                   = "sws"
   instance_class                 = "db.r6g.large"
