@@ -10,6 +10,28 @@ resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
   family      = var.parameter_group_family
 }
 
+resource "aws_security_group" "docdb_sg" {
+  name        = "Security_group-Allow_all_documentdb-${var.app_name}"
+  description = "Allow inbound traffic"
+
+  vpc_id = var.vpc_id
+
+  ingress {
+    from_port   = "27017"
+    to_port     = "27017"
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+
 resource "random_password" "db_password" {
   length           = 16
   special          = true

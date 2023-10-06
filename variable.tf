@@ -12,6 +12,11 @@ variable "env" {
 	default = ""
 }
 
+variable "vpc_id" {
+    type = string
+	default = ""
+}
+
 variable "security_group" {
 	type    = list(string)
 	default = []
