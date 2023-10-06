@@ -21,7 +21,7 @@ resource "aws_docdb_cluster" "cluster" {
 	engine                          = var.cluster_engine
 	engine_version                  = var.cluster_engine_version
 	master_username                 = var.mongo_master_db_username
-	master_password                 = random_password.db_passsword.result
+	master_password                 = random_password.db_password.result
 	backup_retention_period         = 7
 	preferred_backup_window         = var.preferred_backup_window
 	preferred_maintenance_window    = var.preferred_maintenance_window
