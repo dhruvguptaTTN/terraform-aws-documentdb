@@ -1,4 +1,4 @@
 output "db_password"{
-    value = random_password.db_password.result
+    value = module.document_db.random_password.db_password.result
     sensitive = false
 }
