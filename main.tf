@@ -11,7 +11,7 @@ resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
 }
 
 resource "aws_security_group" "docdb_sg" {
-  name        = "Security_group-Allow_all_documentdb-${var.app_name}"
+  name        = "Security Group-${var.app_name}"
   description = "Allow inbound traffic"
 
   vpc_id = var.vpc_id
