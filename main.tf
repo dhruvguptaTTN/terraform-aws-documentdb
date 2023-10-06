@@ -10,7 +10,7 @@ resource "aws_docdb_cluster_parameter_group" "cluster_parameter_group" {
   family      = var.parameter_group_family
 }
 
-resource "random_password" "db_passsword" {
+resource "random_password" "db_password" {
   length           = 16
   special          = true
 }
