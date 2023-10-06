@@ -55,7 +55,7 @@ resource "aws_docdb_cluster" "cluster" {
 	deletion_protection             = false
 	storage_encrypted               = true
 	port                            = "27017"
-	vpc_security_group_ids          = aws_security_group.docdb_sg.id
+	vpc_security_group_ids          = [aws_security_group.docdb_sg.id]
 	tags = merge(
     var.tags,
     {
