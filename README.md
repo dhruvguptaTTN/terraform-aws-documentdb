@@ -3,12 +3,12 @@
 [![Lint Status](https://github.com/tothenew/terraform-aws-template/workflows/Lint/badge.svg)](https://github.com/tothenew/terraform-aws-template/actions)
 [![LICENSE](https://img.shields.io/github/license/tothenew/terraform-aws-template)](https://github.com/tothenew/terraform-aws-template/blob/master/LICENSE)
 
-This is the RDS module which will create the RDS Aurora of MySql or Postgres.
+This is the RDS module which will create the DocumentDB Instance base Cluster.
 The following resources will be created:
-- MySql Aurora Cluster
+- DocumentDB Cluster and Instances
 - Subnet Group
-- Instance Parameter Group
 - Cluster Parameter Group
+- Security Group
 
 ## Usages
 ```
