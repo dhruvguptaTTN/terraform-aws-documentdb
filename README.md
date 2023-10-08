@@ -1,16 +1,33 @@
-# terraform-aws-template
+# terraform-aws-rds
 
 [![Lint Status](https://github.com/tothenew/terraform-aws-template/workflows/Lint/badge.svg)](https://github.com/tothenew/terraform-aws-template/actions)
 [![LICENSE](https://img.shields.io/github/license/tothenew/terraform-aws-template)](https://github.com/tothenew/terraform-aws-template/blob/master/LICENSE)
 
-This is a template to use for baseline. The default actions will provide updates for section bitween Requirements and Outputs.
+This is the RDS module which will create the RDS Aurora of MySql or Postgres.
+The following resources will be created:
+- MySql Aurora Cluster
+- Subnet Group
+- Instance Parameter Group
+- Cluster Parameter Group
 
-The following content needed to be created and managed:
- - Introduction
-     - Explaination of module 
-     - Intended users
- - Resource created and managed by this module
- - Example Usages
+## Usages
+```
+module "document_db" {
+  source = "git@github.com:tothenew/terraform-aws-documentdb.git"  
+
+  app_name                       = "mongo-db"
+  env                            = "dev"
+  vpc_id                         = "vpc-0c7ca42512bbbb"
+  subnet_ids                     = ["subnet-043d59b3957d49","subnet-093641ce3f5498","subnet-0d911d25c86c0a"]
+  project_name                   = "your_project_name"
+  instance_class                 = "db.r6g.large"
+  availability_zones             = ["us-east-1a","us-east-1b","us-east-1c"]
+  parameter_group_family         = "docdb5.0"
+  cluster_engine                 = "docdb"
+  cluster_engine_version         = "5.0.0"
+  mongo_master_db_username       = "admin1"
+}
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -18,9 +35,6 @@ The following content needed to be created and managed:
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.72 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.10 |
-| <a name="requirement_tls"></a> [tls](#requirement\_tls) | >= 3.0 |
 
 ## Providers
 
