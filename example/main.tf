@@ -1,10 +1,10 @@
 module "document_db" {
-  source = "git@github.com:narenderttn/terraform-aws-documentdb.git"  # Replace with the actual path to your module source
+  source = "git@github.com:tothenew/terraform-aws-documentdb.git"  # Replace with the actual path to your module source
 
   app_name                       = "mongo-db"
   env                            = "dev"
-  vpc_id                         = "vpc-0c7ca42512bbbb3df"
-  subnet_ids                     = ["subnet-043d59b3957d49e1d","subnet-093641ce3f549831e","subnet-0d911d25c86c0a429"]
+  vpc_id                         = "vpc-0c7ca42512bbbb"
+  subnet_ids                     = ["subnet-043d59b3957d49","subnet-093641ce3f5498","subnet-0d911d25c86c0a"]
   project_name                   = "sws"
   instance_class                 = "db.r6g.large"
   availability_zones             = ["us-east-1a","us-east-1b","us-east-1c"]
